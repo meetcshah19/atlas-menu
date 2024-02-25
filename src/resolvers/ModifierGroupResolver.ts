@@ -25,6 +25,10 @@ export class ModifierGroupResolver {
   async createModifierGroup(
     @Arg("data") data: CreateModifierGroupInput
   ): Promise<ModifierGroup> {
+    if (data.selection_required_max < data.selection_required_min)
+      throw new Error(
+        "selection_required_max must be greater than or equal to selection_required_min"
+      );
     const modifierGroup = ModifierGroup.create({ ...data });
     await modifierGroup.save();
     return modifierGroup;
@@ -62,7 +66,7 @@ export class ModifierGroupResolver {
     if (!modifierGroup) throw new Error("ModifierGroup not found!");
     const modifier = await Modifier.findOneBy({ id: modifierId });
     if (!modifier) throw new Error("Modifier not found!");
-    if(modifierGroup.modifiers){
+    if (modifierGroup.modifiers) {
       modifierGroup.modifiers.push(modifier);
     } else {
       modifierGroup.modifiers = [modifier];
