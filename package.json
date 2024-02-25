@@ -1,0 +1,26 @@
+{
+  "name": "relier",
+  "version": "1.0.0",
+  "description": "Zen time",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "start": "tsc && node src/app.js"
+  },
+  "author": "meetcshah19",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.3.4"
+  },
+  "dependencies": {
+    "apollo-server": "^3.13.0",
+    "class-validator": "^0.14.1",
+    "glob": "^10.3.10",
+    "graphql": "^15.8.0",
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.2.1",
+    "rimraf": "^5.0.5",
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.3.20"
+  }
+}
